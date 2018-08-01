@@ -9,6 +9,7 @@ namespace ApplicationTest\Controller;
 
 use Application\Controller\IndexController;
 use Zend\Stdlib\ArrayUtils;
+use Zend\Stdlib\Parameters;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 class IndexControllerTest extends AbstractHttpControllerTestCase
@@ -42,12 +43,27 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
     public function testIndexActionViewModelTemplateRenderedWithinLayout()
     {
         $this->dispatch('/', 'GET');
-        $this->assertQuery('.container .jumbotron');
+        $this->assertQuery('.container form');
     }
 
     public function testInvalidRouteDoesNotCrash()
     {
         $this->dispatch('/invalid/route', 'GET');
         $this->assertResponseStatusCode(404);
+    }
+
+    public function testFormSubmit()
+    {
+        $p = new Parameters();
+        $p->set('email_address','asd@asd.asd');
+        $p->set('first_name','Arjeta');
+        $p->set('first_name','Avllaj');
+        $this->getRequest()->setMethod('POST');
+        $this->getRequest()->setPost($p);
+        $this->dispatch('/submit');
+//        $this->dispatch('/submit', 'POST', [
+//            'email_address' => "asd@asd.asd",
+//        ]);
+        $this->assertResponseStatusCode(200);
     }
 }
