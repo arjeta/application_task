@@ -19,7 +19,18 @@ class IndexController extends AbstractActionController
 
     public function submitAction()
     {
-        return new ViewModel(["name" => $_POST["first_name"]]);
+        $first_name = trim($_POST['first_name']);
+        $last_name = trim($_POST['last_name']);
+        $email_address = trim(strtolower($_POST['email_address']));
+
+        $email_valid = filter_var($email_address, FILTER_VALIDATE_EMAIL);
+
+        if ($email_valid != false)
+            $message = "Hello $first_name!";
+        else
+            $message = "The email is invalid!";
+
+        return new ViewModel(["message" => $message, "email_valid" => $email_valid]);
     }
 
 }

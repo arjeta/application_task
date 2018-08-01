@@ -1,5 +1,3 @@
-<div class="alert alert-success" role="alert">
-   <h2>
-       <em>Hello <?= $name ?>!</em>
-   </h2>
+<div class="alert alert-<?= is_string($email_valid)?"success":"danger" ?>" role="alert">
+   <h2><?= $message ?></h2>
 </div>
