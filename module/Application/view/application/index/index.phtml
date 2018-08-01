@@ -1,17 +1,17 @@
-<form data-toggle="validator" role="form">
+<form data-toggle="validator" role="form" method="post" action="<?= $this->url('submit') ?>">
     <div class="form-group has-feedback">
-        <label for="firstname">First name</label>
-        <input type="text" class="form-control" id="first_name" placeholder="First name">
+        <label for="first_name">First name</label>
+        <input type="text" class="form-control" id="first_name" placeholder="First name" name="first_name">
         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     </div>
     <div class="form-group has-feedback">
-        <label for="lastname">Last name</label>
-        <input type="text" class="form-control" id="last_name" placeholder="Last name">
+        <label for="last_name">Last name</label>
+        <input type="text" class="form-control" id="last_name" placeholder="Last name" name="last_name">
         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
     </div>
     <div class="form-group has-feedback">
-        <label for="email" class="control-label">Email address<span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="email_address" placeholder="Email"
+        <label for="email_address" class="control-label">Email address<span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="email_address" placeholder="Email" name="email_address"
                data-error="Invalid email address format! "
                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" required>
         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>

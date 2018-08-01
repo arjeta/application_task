@@ -16,4 +16,10 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function submitAction()
+    {
+        return new ViewModel(["name" => $_POST["first_name"]]);
+    }
+
 }
